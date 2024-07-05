@@ -1,9 +1,15 @@
-const members = [
-    { name: 'Antoine Dupont', email: 'antoine@example.com' },
-    { name: 'Jeanne Rouge', email: 'jeanne@example.com' }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
+    fetch('members.json')
+        .then(response => response.json())
+        .then(data => {
+            // Utilisation des données chargées dans votre application JavaScript
+            initializeApp(data); // Appel à une fonction d'initialisation avec les données
+        })
+        .catch(error => console.error('Erreur lors du chargement des membres :', error));
+});
+
+function initializeApp(data) {
+    const members = data;
     const memberList = document.getElementById('member-list');
     members.forEach(member => addMemberToList(member));
 
@@ -12,14 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
-        const newMember = { name, email };
+        const majeur = document.getElementById('majeur').value === 'oui';
+        const licencePayee = document.getElementById('licencePayee').value === 'oui';
+        const newMember = { name, email, majeur, "licence payée": licencePayee };
 
         members.push(newMember);
         addMemberToList(newMember);
+        updateDashboard(members);
 
         // Clear the form
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
+        document.getElementById('majeur').value = '';
+        document.getElementById('licencePayee').value = '';
     });
 
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -43,8 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-});
 
+    updateDashboard(members);
+}
 
 function addMemberToList(member) {
     const li = document.createElement('li');
@@ -52,7 +64,7 @@ function addMemberToList(member) {
     document.getElementById('member-list').appendChild(li);
 }
 
-function updateDashboard() {
+function updateDashboard(members) {
     // Total des adhérents
     const totalMembers = members.length;
     document.getElementById('total-members').textContent = totalMembers;
