@@ -50,3 +50,26 @@ canvas {
     max-width: 100%;
     height: auto;
 }
+
+
+.dashboard {
+    margin-top: 20px;
+}
+
+.chart-container {
+    margin-bottom: 20px;
+}
+
+.other-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.other-stats div {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 30%;
+}
