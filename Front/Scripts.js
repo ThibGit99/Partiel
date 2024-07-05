@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data: {
             labels: ['Septembre', 'Octobre', 'Novembre', 'Décembre', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet'],
             datasets: [{
-                label: 'Nombre d\'adhérents',
+                label: 'Nombre d\'adhérents présents en moyenne',
                 data: [80, 70, 60, 50, 40, 35, 50, 53, 58, 47, 25],
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
