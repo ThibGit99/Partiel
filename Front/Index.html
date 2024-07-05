@@ -13,12 +13,44 @@
         <input type="email" id="email" placeholder="Email" required>
         <button type="submit">Ajouter Membre</button>
     </form>
-    <ul id="member-list"></ul>
 
+    <ul id="member-list"></ul>
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <h2>Statistiques</h2>
+        <div class="chart-container">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+        <div class="other-stats">
+            <div>
+                <h3>Total des adhérents</h3>
+                <p id="total-members">0</p>
+            </div>
+            <div>
+                <h3>Adhérents majeurs</h3>
+                <p id="adult-members">0</p>
+            </div>
+            <div>
+                <h3>Adhérents avec licence payée</h3>
+                <p id="paid-members">0</p>
+            </div>
+        </div>
+    </div>
     <div>
         <canvas id="myChart" width="600" height="300"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="Scripts.js"></script>
+
+    <script>
+        // Chargement des données JSON avec fetch
+        fetch('members.json')
+            .then(response => response.json())
+            .then(data => {
+                // Utilisation des données chargées dans votre application JavaScript
+                initializeApp(data); // Appel à une fonction d'initialisation avec les données
+            })
+            .catch(error => console.error('Erreur lors du chargement des membres :', error));
+    </script>
 </body>
 </html>

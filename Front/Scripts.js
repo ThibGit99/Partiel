@@ -51,3 +51,17 @@ function addMemberToList(member) {
     li.textContent = `${member.name} - ${member.email}`;
     document.getElementById('member-list').appendChild(li);
 }
+
+function updateDashboard() {
+    // Total des adhérents
+    const totalMembers = members.length;
+    document.getElementById('total-members').textContent = totalMembers;
+
+    // Adhérents majeurs
+    const adultMembers = members.filter(member => member.majeur).length;
+    document.getElementById('adult-members').textContent = adultMembers;
+
+    // Adhérents avec licence payée
+    const paidMembers = members.filter(member => member['licence payée']).length;
+    document.getElementById('paid-members').textContent = paidMembers;
+}
