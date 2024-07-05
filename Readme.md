@@ -81,3 +81,12 @@ Ce fichier contient la logique JavaScript pour :
 members.json
 
 Ce fichier contient les données initiales des membres.
+
+    [
+    {
+        "name": "Antoine Dupont",
+        "email": "antoine@example.com",
+        "majeur": "oui",
+        "licencePayee": "oui"
+    }
+    ]
