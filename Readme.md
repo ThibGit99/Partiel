@@ -1,0 +1,83 @@
+Association Rugby
+
+Ce projet est une application web pour gérer les membres d'une association de rugby. Il inclut un formulaire pour ajouter des membres, une liste des membres, et un tableau de bord avec des statistiques et un graphique des adhérents.
+Prérequis
+
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
+
+    Node.js (inclut npm)
+    Un éditeur de texte comme Visual Studio Code
+
+Installation
+
+    Clonez ce dépôt ou téléchargez les fichiers source.
+
+    bash
+
+git clone https://github.com/votre-utilisateur/association-rugby.git
+cd association-rugby
+
+Installez http-server. http-server est un serveur HTTP simple et léger pour Node.js.
+
+bash
+
+    npm install -g http-server
+
+Utilisation
+
+    Naviguez vers le répertoire de votre projet :
+
+    bash
+
+cd /path/to/your/project
+
+Démarrez le serveur :
+
+bash
+
+http-server
+
+Ouvrez votre navigateur et allez à l'adresse suivante :
+
+arduino
+
+http://localhost:8080
+
+Par défaut, http-server sert les fichiers sur le port 8080. Si ce port est déjà utilisé, vous pouvez spécifier un autre port avec l'option -p :
+
+bash
+
+http-server -p 8000
+
+Et accédez à l'adresse :
+
+arduino
+
+    http://localhost:8000
+
+Structure du Projet
+
+    index.html : Le fichier HTML principal.
+    styles.css : Le fichier CSS pour le style de l'application.
+    scripts.js : Le fichier JavaScript pour la logique de l'application.
+    members.json : Le fichier JSON contenant les données des membres.
+
+Fichiers Clés
+index.html
+
+Ce fichier contient la structure HTML de l'application, y compris le formulaire pour ajouter des membres, la liste des membres et le tableau de bord avec les statistiques et le graphique.
+styles.css
+
+Ce fichier contient les styles pour l'application, y compris les styles pour le formulaire, la liste des membres et le tableau de bord.
+scripts.js
+
+Ce fichier contient la logique JavaScript pour :
+
+    Charger les membres depuis le fichier JSON.
+    Ajouter des membres à la liste.
+    Mettre à jour le tableau de bord avec des statistiques.
+    Afficher un graphique des adhérents.
+
+members.json
+
+Ce fichier contient les données initiales des membres.
