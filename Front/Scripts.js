@@ -1,36 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let members = [];
+    let users = [];
+
     fetch('members.json')
         .then(response => response.json())
         .then(data => {
-            // Utilisation des données chargées dans votre application JavaScript
-            initializeApp(data); // Appel à une fonction d'initialisation avec les données
+            members = data.members;
+            users = data.users;
+
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const user = users.find(u => u.username === username && u.password === password);
+
+                if (user) {
+                    if (user.role === 'admin') {
+                        document.getElementById('admin-section').style.display = 'block';
+                    }
+                    document.getElementById('user-section').style.display = 'block';
+                    document.getElementById('member-form').style.display = 'block';
+                    document.querySelector('.dashboard').style.display = 'block';
+
+                    initializeApp(members, user.role);
+                } else {
+                    alert('Nom d\'utilisateur ou mot de passe incorrect.');
+                }
+            });
         })
         .catch(error => console.error('Erreur lors du chargement des membres :', error));
 });
 
-function initializeApp(data) {
-    const members = data;
+function initializeApp(data, role) {
     const memberList = document.getElementById('member-list');
-    members.forEach(member => addMemberToList(member));
+    memberList.innerHTML = '';
+    data.forEach(member => addMemberToList(member, role));
 
     document.getElementById('member-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const majeur = document.getElementById('majeur').value === 'oui';
         const licencePayee = document.getElementById('licencePayee').value === 'oui';
         const newMember = { name, email, majeur, "licence payée": licencePayee };
 
-        members.push(newMember);
-        addMemberToList(newMember);
-        updateDashboard(members);
+        data.push(newMember);
+        addMemberToList(newMember, role);
+        updateDashboard(data);
 
         // Clear the form
         document.getElementById('name').value = '';
         document.getElementById('email').value = '';
-        document.getElementById('majeur').value = '';
-        document.getElementById('licencePayee').value = '';
+        document.getElementById('majeur').value = 'oui';
+        document.getElementById('licencePayee').value = 'oui';
     });
 
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -55,12 +79,16 @@ function initializeApp(data) {
         }
     });
 
-    updateDashboard(members);
+    updateDashboard(data);
 }
 
-function addMemberToList(member) {
+function addMemberToList(member, role) {
     const li = document.createElement('li');
-    li.textContent = `${member.name} - ${member.email}`;
+    if (role === 'admin') {
+        li.textContent = `${member.name} - ${member.email} - Majeur: ${member.majeur ? 'Oui' : 'Non'} - Licence payée: ${member["licence payée"] ? 'Oui' : 'Non'}`;
+    } else {
+        li.textContent = `${member.name} - Licence payée: ${member["licence payée"] ? 'Oui' : 'Non'}`;
+    }
     document.getElementById('member-list').appendChild(li);
 }
 

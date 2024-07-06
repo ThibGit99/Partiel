@@ -7,16 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1>Connexion</h1>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+        <input type="password" id="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <div id="admin-section" style="display: none;">
+        <h2>Section Administrateur</h2>
+        <p>Accès complet aux données sensibles.</p>
+    </div>
+
+    <div id="user-section" style="display: none;">
+        <h2>Section Utilisateur</h2>
+        <p>Accès limité.</p>
+    </div>
+
     <h1>Membres de l'Association</h1>
-    <form id="member-form">
-        <input type="text" id="name" placeholder="Name" required>
+    <form id="member-form" style="display: none;">
+        <input type="text" id="name" placeholder="Nom" required>
         <input type="email" id="email" placeholder="Email" required>
+        <select id="majeur">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+        </select>
+        <select id="licencePayee">
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+        </select>
         <button type="submit">Ajouter Membre</button>
     </form>
 
     <ul id="member-list"></ul>
-    <!-- Dashboard -->
-    <div class="dashboard">
+
+    <div class="dashboard" style="display: none;">
         <h2>Statistiques</h2>
         <div class="chart-container">
             <canvas id="myChart" width="500" height="250"></canvas>
@@ -38,17 +63,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="Scripts.js"></script>
-
-    <script>
-        // Chargement des données JSON avec fetch
-        fetch('members.json')
-            .then(response => response.json())
-            .then(data => {
-                // Utilisation des données chargées dans votre application JavaScript
-                initializeApp(data); // Appel à une fonction d'initialisation avec les données
-            })
-            .catch(error => console.error('Erreur lors du chargement des membres :', error));
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
