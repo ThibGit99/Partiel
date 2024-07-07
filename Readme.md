@@ -96,9 +96,8 @@ members.json
 
 Ce fichier contient les données initiales des membres et des utilisateurs. Voici un exemple de structure :
 
-json
 
-{
+    {
     "members": [
         { "name": "Antoine Dupont", "email": "antoine@example.com", "majeur": true, "licence payée": true },
         
