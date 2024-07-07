@@ -114,4 +114,4 @@ Ce fichier contient les données initiales des membres et des utilisateurs. Voic
         { "username": "admin", "password": "adminpass", "role": "admin" },
         { "username": "user", "password": "userpass", "role": "user" }
     ]
-}
+    }
