@@ -17,31 +17,29 @@
     <div id="admin-section" style="display: none;">
         <h2>Section Administrateur</h2>
         <p>Accès complet aux données sensibles.</p>
+        <h1>Membres de l'Association</h1>
+        <form id="member-form">
+            <input type="text" id="name" placeholder="Nom" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <label for="majeur">Majeur</label>
+            <select id="majeur">
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+            </select>
+            <label for="licencePayee">Licence Payée</label>
+            <select id="licencePayee">
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+            </select>
+            <button type="submit">Ajouter Membre</button>
+        </form>
     </div>
 
     <div id="user-section" style="display: none;">
-        <h2>Section Utilisateur</h2>
-        <p>Accès limité.</p>
+        <h1>Section Utilisateur</h1>
+        <h1>Membres de l'Association</h1>
+        <ul id="member-list"></ul>
     </div>
-
-    <h1>Membres de l'Association</h1>
-    <form id="member-form" style="display: none;">
-        <input type="text" id="name" placeholder="Nom" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <label for="majeur">Majeur</label>
-        <select id="majeur">
-            <option value="oui">Oui</option>
-            <option value="non">Non</option>
-        </select>
-        <label for="licencePayee">Licence Payée</label>
-        <select id="licencePayee">
-            <option value="oui">Oui</option>
-            <option value="non">Non</option>
-        </select>
-        <button type="submit">Ajouter Membre</button>
-    </form>
-
-    <ul id="member-list"></ul>
 
     <div class="dashboard" style="display: none;">
         <h2>Statistiques</h2>

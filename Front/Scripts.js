@@ -18,9 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (user) {
                     if (user.role === 'admin') {
                         document.getElementById('admin-section').style.display = 'block';
+                        document.getElementById('member-form').style.display = 'block';
+                        document.getElementById('user-section').style.display = 'none';
+                    } else {
+                        document.getElementById('user-section').style.display = 'block';
+                        document.getElementById('admin-section').style.display = 'none';
                     }
-                    document.getElementById('user-section').style.display = 'block';
-                    document.getElementById('member-form').style.display = 'block';
                     document.querySelector('.dashboard').style.display = 'block';
 
                     initializeApp(members, user.role);
@@ -37,25 +40,27 @@ function initializeApp(data, role) {
     memberList.innerHTML = '';
     data.forEach(member => addMemberToList(member, role));
 
-    document.getElementById('member-form').addEventListener('submit', (e) => {
-        e.preventDefault();
+    if (role === 'admin') {
+        document.getElementById('member-form').addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const majeur = document.getElementById('majeur').value === 'oui';
-        const licencePayee = document.getElementById('licencePayee').value === 'oui';
-        const newMember = { name, email, majeur, "licence payée": licencePayee };
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const majeur = document.getElementById('majeur').value === 'oui';
+            const licencePayee = document.getElementById('licencePayee').value === 'oui';
+            const newMember = { name, email, majeur, "licence payée": licencePayee };
 
-        data.push(newMember);
-        addMemberToList(newMember, role);
-        updateDashboard(data);
+            data.push(newMember);
+            addMemberToList(newMember, role);
+            updateDashboard(data);
 
-        // Clear the form
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('majeur').value = 'oui';
-        document.getElementById('licencePayee').value = 'oui';
-    });
+            // Clear the form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('majeur').value = 'oui';
+            document.getElementById('licencePayee').value = 'oui';
+        });
+    }
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const membersChart = new Chart(ctx, {
