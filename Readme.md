@@ -29,17 +29,16 @@ Utilisation
 
     bash
 
-cd /path/to/your/project
+    cd /path/to/your/project
 
 Démarrez le serveur :
 
 bash
 
-http-server
+    http-server
 
 Ouvrez votre navigateur et allez à l'adresse suivante :
 
-arduino
 
 http://localhost:8080
 
@@ -47,11 +46,10 @@ Par défaut, http-server sert les fichiers sur le port 8080. Si ce port est déj
 
 bash
 
-http-server -p 8000
+    http-server -p 8000
 
 Et accédez à l'adresse :
 
-arduino
 
     http://localhost:8000
 
