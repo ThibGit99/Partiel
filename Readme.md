@@ -101,10 +101,15 @@ json
 {
     "members": [
         { "name": "Antoine Dupont", "email": "antoine@example.com", "majeur": true, "licence payée": true },
+        
         { "name": "Jeanne Rouge", "email": "jeanne@example.com", "majeur": true, "licence payée": false },
+        
         { "name": "Pierre Leroy", "email": "pierre@example.com", "majeur": true, "licence payée": true },
+        
         { "name": "Marie Lefevre", "email": "marie@example.com", "majeur": false, "licence payée": false },
+        
         { "name": "Pauline Rousseau", "email": "pauline@example.com", "majeur": true, "licence payée": true }
+        
     ],
     "users": [
         { "username": "admin", "password": "adminpass", "role": "admin" },
